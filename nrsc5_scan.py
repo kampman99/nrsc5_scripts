@@ -9,8 +9,6 @@ def main():
     
     while freq <= 108.1:
 
-        #print(f'Checking {freq}:')
-        
         # Call nrsc5 and see if it can play program 0 on this frequency
         stderr = EasyProcess(f'nrsc5 {freq} 0').call(timeout = timeout).stderr
 
@@ -44,7 +42,6 @@ def main():
                 if 'Station location' in line:
                     station_location = line.split(' ', 1)[1]
                     
-
             print(f'    Frequency: {freq} MHz')
             print(f'    {station_name}') if station_name else print('    No station name')
             print(f'    {station_location}') if station_location else print('    No station location')
@@ -61,10 +58,6 @@ def main():
                 f.close()
             
             count_found += 1
-
-
-        #else:
-        #    print('    no HD')
 
         freq += .2
         freq = round(freq, 1)

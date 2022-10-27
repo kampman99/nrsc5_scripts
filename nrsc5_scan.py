@@ -4,17 +4,16 @@ from datetime import datetime
 def main():
     
     start_freq = 87.9
+    end_freq = 108.1
     count_found = 0
     timeout = 15
     
     freq = start_freq
 
-    while freq <= 108.1:
+    while freq <= end_freq:
 
         # Call nrsc5 and see if it can play program 0 on this frequency
         stderr = EasyProcess(f'nrsc5 {freq} 0').call(timeout = timeout).stderr
-
-        end_freq = freq
 
         if 'Synchronized' in stderr:
             

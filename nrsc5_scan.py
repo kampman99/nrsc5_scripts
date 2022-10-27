@@ -49,18 +49,18 @@ def main():
                 if 'SIG Service:' in line:
                     sig_services.append(line.split(' ', 1)[1])
                     
-            text += f'    Frequency: {freq} MHz'
-            text += f'    {station_name}' if station_name else '    No station name'
-            text += f'    {station_location}' if station_location else '    No station location'
-            text += f'    {message}' if message else '    No message'
+            text += f'    Frequency: {freq} MHz\n'
+            text += f'    {station_name}\n' if station_name else '    No station name\n'
+            text += f'    {station_location}\n' if station_location else '    No station location\n'
+            text += f'    {message}\n' if message else '    No message\n'
             if audio_prog_0:
-                text += f'    {audio_prog_0}'
+                text += f'    {audio_prog_0}\n'
             if audio_prog_1:
-                text += f'    {audio_prog_1}'
+                text += f'    {audio_prog_1}\n'
             if audio_prog_2:
-                text += f'    {audio_prog_2}'
+                text += f'    {audio_prog_2}\n'
             if audio_prog_3:
-                text += f'    {audio_prog_3}'
+                text += f'    {audio_prog_3}\n'
             if sig_services:
                 for service in sig_services:
                     text += f'    {service}\n'

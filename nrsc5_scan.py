@@ -1,13 +1,13 @@
 from easyprocess import EasyProcess # python -m pip install easyprocess
 from datetime import datetime
 
+start_freq = 87.9
+end_freq = 108.1
+timeout = 10
+
 def main():
     
-    start_freq = 87.9
-    end_freq = 108.1
     count_found = 0
-    timeout = 15
-    
     freq = start_freq
 
     while freq <= end_freq:
@@ -69,6 +69,8 @@ def main():
                 print(text)
 
             print()
+
+            text += f'Timeout: {timeout}\n'
 
             date_time = datetime.now().strftime("%Y-%m-%d %H%M%S")
             with open(f'{freq} {station_name_only} {date_time}.txt', 'w') as f:

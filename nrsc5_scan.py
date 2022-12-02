@@ -79,8 +79,6 @@ def main():
             if text:
                 print(text)
 
-            text += f'Timeout: {timeout}'
-
             with open(f'{freq} {station_name_only} {date_time}.txt', 'w') as f:
                 f.write(stderr)
                 f.write('\r\n')

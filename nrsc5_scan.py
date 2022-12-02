@@ -60,7 +60,7 @@ def main():
                 if 'SIG Service:' in line:
                     sig_services.append(line.split(' ', 1)[1])
                     
-            text += f'    Frequency: {freq} MHz\n'
+            text += f'Frequency: {freq} MHz\n'
             text += f'    {station_name}\n' if station_name else '    No station name\n'
             text += f'    {station_location}\n' if station_location else '    No station location\n'
             text += f'    {message}\n' if message else '    No message\n'

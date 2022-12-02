@@ -1,15 +1,26 @@
 from easyprocess import EasyProcess # python -m pip install easyprocess
 from datetime import datetime
 
+# US FM band 87.9 - 107.9
 start_freq = 87.9
 end_freq = 107.9
+
+# How long to wait on a frequency before deciding there's no HD broadcast (seconds)
 timeout = 10
 
+date_time = datetime.now().strftime("%Y-%m-%d %H%M%S")
+
+summary_filename = f'FM HD Radio bandscan {date_time}.txt'
+
 def main():
+    
+    
     
     count_found = 0
     freq = start_freq
 
+    summary = ''
+    
     while freq <= end_freq:
 
         # Call nrsc5 and see if it can play program 0 on this frequency
@@ -70,7 +81,6 @@ def main():
 
             text += f'Timeout: {timeout}'
 
-            date_time = datetime.now().strftime("%Y-%m-%d %H%M%S")
             with open(f'{freq} {station_name_only} {date_time}.txt', 'w') as f:
                 f.write(stderr)
                 f.write('\r\n')
@@ -79,11 +89,17 @@ def main():
             
             count_found += 1
 
+            summary += text
+
         freq += .2
         freq = round(freq, 1)
     
     print(f'Scan {start_freq} - {end_freq} complete. {count_found} HD stations found.')
 
+    with open(summary_filename, 'w') as f:
+        f.write(f'FM HD Radio bandscan {start_freq}MHz - {end_freq}MHz. {count_found} HD stations.\n\n')
+        f.write(summary)
+        f.close()
 
 if __name__ == "__main__":
     main()

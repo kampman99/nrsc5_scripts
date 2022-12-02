@@ -2,7 +2,7 @@ from easyprocess import EasyProcess # python -m pip install easyprocess
 from datetime import datetime
 
 start_freq = 87.9
-end_freq = 108.1
+end_freq = 107.9
 timeout = 10
 
 def main():
@@ -68,14 +68,12 @@ def main():
             if text:
                 print(text)
 
-            print()
-
-            text += f'Timeout: {timeout}\n'
+            text += f'Timeout: {timeout}'
 
             date_time = datetime.now().strftime("%Y-%m-%d %H%M%S")
             with open(f'{freq} {station_name_only} {date_time}.txt', 'w') as f:
                 f.write(stderr)
-                f.write('\n')
+                f.write('\r\n')
                 f.write(text)
                 f.close()
             
